@@ -45,12 +45,6 @@ const mapStateToProps = ({ languages }) => ({
   languages,
 });
 
-/**
- * Aqui nós mapeamos nossos actions então a função fetchLanguages vai ficar disponivel em props tambem.
- */
-const mapDispatchToProps = (dispatch) => ({
-  fetchLanguages: () =>
-    dispatch({ type: "languages/fetch", payload: FetchLanguages() }),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, { fetchLanguages: FetchLanguages })(
+  App
+);

@@ -1,3 +1,8 @@
 export function FetchLanguages() {
-  return [{ id: 1, name: "bananas" }];
+  return (dispatch) => {
+    dispatch({
+      type: "languages/fetch",
+      payload: [{ id: 1, name: "Bananas" }],
+    });
+  };
 }
