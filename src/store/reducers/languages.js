@@ -1,8 +1,8 @@
 export function languagesReducer(state = [], action) {
   switch (action.type) {
     case "languages/fetch":
-      console.log(action.payload);
-
+      return action.payload;
+    case "languages/delete":
       return action.payload;
     default:
       return state;

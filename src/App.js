@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
 
-import { FetchLanguages } from "./store/actions/languages";
+import { FetchLanguages, deleteLanguage } from "./store/actions/languages";
 
 /**
  * languages vem ali do mapStateToProps
- * fetchLanguages vem do mapActionsToProps
+ * fetchLanguages, deleteLanguage vem do mapActionsToProps
  */
-function App({ languages, fetchLanguages }) {
+function App({ languages, fetchLanguages, deleteLanguage }) {
   /** isso aqui é equivalente ao componentDidMount, não é o mesmo conceito mas é similar. */
   useEffect(() => {
     fetchLanguages();
@@ -29,7 +29,9 @@ function App({ languages, fetchLanguages }) {
           <li key={language.id}>
             <div>
               <h3>{language.name}</h3>
-              <button>Delete Member</button>
+              <button onClick={() => deleteLanguage(language.id)}>
+                Delete Member
+              </button>
             </div>
           </li>
         ))}
@@ -45,6 +47,7 @@ const mapStateToProps = ({ languages }) => ({
   languages,
 });
 
-export default connect(mapStateToProps, { fetchLanguages: FetchLanguages })(
-  App
-);
+export default connect(mapStateToProps, {
+  fetchLanguages: FetchLanguages,
+  deleteLanguage,
+})(App);
