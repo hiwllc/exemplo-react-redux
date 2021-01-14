@@ -1,9 +1,18 @@
+import { useEffect } from "react";
 import { connect } from "react-redux";
 
+import { FetchLanguages } from "./store/actions/languages";
+
 /**
- * esse languages vem ali do mapStateToProps
+ * languages vem ali do mapStateToProps
+ * fetchLanguages vem do mapActionsToProps
  */
-function App({ languages }) {
+function App({ languages, fetchLanguages }) {
+  /** isso aqui é equivalente ao componentDidMount, não é o mesmo conceito mas é similar. */
+  useEffect(() => {
+    fetchLanguages();
+  }, []);
+
   return (
     <>
       <div>
@@ -36,4 +45,12 @@ const mapStateToProps = ({ languages }) => ({
   languages,
 });
 
-export default connect(mapStateToProps)(App);
+/**
+ * Aqui nós mapeamos nossos actions então a função fetchLanguages vai ficar disponivel em props tambem.
+ */
+const mapDispatchToProps = (dispatch) => ({
+  fetchLanguages: () =>
+    dispatch({ type: "languages/fetch", payload: FetchLanguages() }),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

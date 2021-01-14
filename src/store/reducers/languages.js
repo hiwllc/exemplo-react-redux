@@ -1,6 +1,8 @@
 export function languagesReducer(state = [], action) {
   switch (action.type) {
-    case action.FETCH_LANGUAGE:
+    case "languages/fetch":
+      console.log(action);
+
       return action.payload;
     default:
       return state;
