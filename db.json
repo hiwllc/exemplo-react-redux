@@ -1,0 +1,9 @@
+{
+  "languages": [
+    { "id": 1, "name": "React" },
+    { "id": 2, "name": "Redux" },
+    { "id": 3, "name": "TypeScript" },
+    { "id": 4, "name": "Formik" },
+    { "id": 5, "name": "Yup" }
+  ]
+}
